@@ -1,6 +1,5 @@
 package es.carsharing.domainModel;
 
-import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 
 @Entity
@@ -15,6 +14,10 @@ public class Direccion extends Localizacion {
 
 	public String getNumero() {
 		return numero;
+	}
+	
+	protected Direccion() {
+		
 	}
 
 	public Direccion(String calle, String numero, String ciudad) {

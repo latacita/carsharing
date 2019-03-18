@@ -16,6 +16,10 @@ public class Vehiculo {
 	@Embedded
 	protected MarcaVehiculo marca;
 	
+	protected Vehiculo() {
+		
+	}
+	
 	public Vehiculo(String matricula, MarcaVehiculo marca) {
 		this.matricula = matricula;
 		this.marca = marca;

@@ -1,6 +1,5 @@
 package es.carsharing.domainModel;
 
-import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -19,6 +18,10 @@ public abstract class Localizacion {
 	
 	public String getCiudad() {
 		return ciudad;
+	}
+	
+	protected Localizacion() {
+		
 	}
 	
 	public Localizacion(String ciudad) {

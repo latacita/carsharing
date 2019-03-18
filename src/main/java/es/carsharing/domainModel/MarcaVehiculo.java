@@ -11,6 +11,10 @@ public class MarcaVehiculo {
 		return this.nombre;
 	}
 	
+	protected MarcaVehiculo() {
+		
+	}
+	
 	public MarcaVehiculo(String nombre) {
 		this.nombre = nombre;
 	}

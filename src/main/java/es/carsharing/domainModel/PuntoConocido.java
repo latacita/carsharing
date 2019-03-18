@@ -1,6 +1,5 @@
 package es.carsharing.domainModel;
 
-import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 
 @Entity
@@ -10,6 +9,10 @@ public class PuntoConocido extends Localizacion {
 
 	public String getNombreSitio() {
 		return nombreSitio;
+	}
+	
+	protected PuntoConocido() {
+		
 	}
 
 	public PuntoConocido(String ciudad, String nombreSitio) {

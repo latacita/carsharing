@@ -3,7 +3,6 @@ package es.carsharing.domainModel;
 import java.util.Set;
 
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 @Entity

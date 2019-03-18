@@ -4,14 +4,11 @@ import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -67,6 +64,10 @@ public class Viaje {
 
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
+	}
+	
+	protected Viaje() {
+		
 	}
 
 	public Viaje(Localizacion origen, Localizacion destino, Conductor conductor, 
