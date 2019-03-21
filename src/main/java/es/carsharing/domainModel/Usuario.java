@@ -17,7 +17,9 @@ import javax.persistence.ManyToMany;
 public class Usuario {
 	
 	@Id
+	protected String username;
 	protected String nombre;
+	protected String apellido;
 	protected Date fechaAlta;
 	protected String email;
 	@ElementCollection
@@ -32,13 +34,24 @@ public class Usuario {
 		
 	}
 	
-	public Usuario(String nombre, String email) {
+	public Usuario(String username, String nombre, String apellido, String email) {
+		this.username = username;
 		this.nombre = nombre;
-		this.telefonos = new ArrayList<Integer>();
+		this.apellido = apellido;
 		this.email = email;
+		this.telefonos = new ArrayList<Integer>();
 		this.fechaAlta = new Date();
 	}
 	
+	
+	public String getUsername() {
+		return username;
+	}
+
+	public String getApellido() {
+		return apellido;
+	}
+
 	public String getEmail() {
 		return email;
 	}
@@ -66,6 +79,12 @@ public class Usuario {
 	public Set<Viaje> getViajesAceptados() {
 		return viajesAceptados;
 	}
+	
+	@Override
+	public String toString() {
+		return "[" + this.username + "] " + this.nombre + " " + this.apellido; 
+	}
+	
 
 	public void solicitarPlaza(Viaje v) {
 		
