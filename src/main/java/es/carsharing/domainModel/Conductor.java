@@ -30,8 +30,8 @@ public class Conductor extends Usuario {
 		
 	}
 	
-	public Conductor(String nombre, String email, int anhosCarnet) {
-		super(nombre,email);
+	public Conductor(String username, String nombre, String apellido, String email, int anhosCarnet) {
+		super(username,nombre,apellido,email);
 		this.anhosCarnet = anhosCarnet;
 	}
 

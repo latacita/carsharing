@@ -32,8 +32,8 @@ public class AppFeeder implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		feedUsuarios();
-		feedConductores();
-		feedViajes();
+		// feedConductores();
+		// feedViajes();
 		
 		testViajeRepository();
 		
@@ -41,14 +41,14 @@ public class AppFeeder implements CommandLineRunner {
 	}
 
 	private void feedUsuarios() {
-		Usuario u1 = new Usuario("Paco","paco@carSharing.es");
-		Usuario u2 = new Usuario("Lola","lola@carSharing.es");
+		Usuario u1 = new Usuario("erPaco","Paco","Gómez","paco@carSharing.es");
+		Usuario u2 = new Usuario("laLola","Lola","García","lola@carSharing.es");
 		ur.save(u1);
 		ur.save(u2);
 	}
 	
 	private void feedConductores() {
-		Conductor c = new Conductor("Travis","travisBickle@carsharing.es",17);
+		Conductor c = new Conductor("TaxiDriver","Travis","Bickle","travisBickle@nyc-taxi.us",22);
 		ur.save(c);
 	}
 
@@ -81,29 +81,29 @@ public class AppFeeder implements CommandLineRunner {
 	
 	private void testViajeRepository() {
 		
-		SimpleDateFormat dateParser = new SimpleDateFormat("dd-MM-yyyy");
-		Date sample = null;
-		try {
-			sample = dateParser.parse("01-01-2020");
-		} catch (ParseException e) {
-			System.out.println("Crujo parseando fecha");
-			e.printStackTrace();
-		}
-		
-		// Set<Viaje> viajes = vr.findByOrigenCiudadAndDestinoCiudad("Santander","Cadiz");
-		Set<Viaje> viajes = vr.findByOrigenAndDestino("Santander","Cadiz");
-		
-		System.out.println("Viajes recuperados = " + viajes.size());
-	
-		for(Viaje v : viajes) {
-			System.out.println("Viaje in " + v.getFecha());
-		}
-		
-		viajes = vr.findByOrigen_CiudadAndFechaBeforeOrderByPrecio("Santander", sample);
-
-		System.out.println("================================");
-		
-		System.out.println("Viajes recuperados = " + viajes.size());
+//		SimpleDateFormat dateParser = new SimpleDateFormat("dd-MM-yyyy");
+//		Date sample = null;
+//		try {
+//			sample = dateParser.parse("01-01-2020");
+//		} catch (ParseException e) {
+//			System.out.println("Crujo parseando fecha");
+//			e.printStackTrace();
+//		}
+//		
+//		// Set<Viaje> viajes = vr.findByOrigenCiudadAndDestinoCiudad("Santander","Cadiz");
+//		Set<Viaje> viajes = vr.findByOrigenAndDestino("Santander","Cadiz");
+//		
+//		System.out.println("Viajes recuperados = " + viajes.size());
+//	
+//		for(Viaje v : viajes) {
+//			System.out.println("Viaje in " + v.getFecha());
+//		}
+//		
+//		viajes = vr.findByOrigen_CiudadAndFechaBeforeOrderByPrecio("Santander", sample);
+//
+//		System.out.println("================================");
+//		
+//		System.out.println("Viajes recuperados = " + viajes.size());
 		
 		
 //		Usuario paco = ur.findByEmail("paco@carSharing.es"); 
