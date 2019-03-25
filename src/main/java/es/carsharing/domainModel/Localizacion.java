@@ -6,6 +6,8 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 
+import com.fasterxml.jackson.annotation.JsonValue;
+
 @Entity
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 public abstract class Localizacion {
@@ -27,5 +29,9 @@ public abstract class Localizacion {
 	public Localizacion(String ciudad) {
 		this.ciudad = ciudad;
 	}
+	
+	@Override
+	@JsonValue
+	public abstract String toString();
 	
 }

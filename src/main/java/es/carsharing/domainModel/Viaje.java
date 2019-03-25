@@ -11,29 +11,44 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonUnwrapped;
+import com.fasterxml.jackson.annotation.JsonView;
+
+import es.carsharing.service.api.Views;
+
 @Entity
 public class Viaje {
 
 	@Id
 	@GeneratedValue
+	@JsonView(Views.DescripcionViaje.class)
 	protected long id;
 	
+	@JsonView(Views.DescripcionViaje.class)
 	protected int precio;
+	@JsonView(Views.DescripcionViaje.class)
 	protected int duracion;
+	@JsonView(Views.DescripcionViaje.class)
 	protected int numPlazas;
+	@JsonView(Views.DescripcionViaje.class)
 	protected Date fecha;
  
 	@OneToOne(cascade=CascadeType.ALL)
+	@JsonUnwrapped
+	@JsonView(Views.DescripcionViaje.class)
 	protected Localizacion origen;
 	@OneToOne(cascade=CascadeType.ALL)
+	@JsonUnwrapped
+	@JsonView(Views.DescripcionViaje.class)
 	protected Localizacion destino;
 	
 	@ManyToMany
 	protected Set<Usuario> viajeros;
 	@ManyToOne
+	@JsonView(Views.DescripcionViaje.class)
 	protected Conductor conductor;
 	
-
 	public int getPrecio() {
 		return precio;
 	}
@@ -66,6 +81,28 @@ public class Viaje {
 		this.fecha = fecha;
 	}
 	
+	
+	
+	public long getId() {
+		return id;
+	}
+
+	public Localizacion getOrigen() {
+		return origen;
+	}
+
+	public Localizacion getDestino() {
+		return destino;
+	}
+
+	public Set<Usuario> getViajeros() {
+		return viajeros;
+	}
+
+	public Conductor getConductor() {
+		return conductor;
+	}
+
 	protected Viaje() {
 		
 	}

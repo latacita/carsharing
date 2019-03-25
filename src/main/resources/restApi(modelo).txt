@@ -72,3 +72,38 @@ Modelo de Respuesta:
         "anhosCarnet": 22
     }
 }
+
+/viajes/{id}/viajeros
+	GET - Devuelve la lista de viajeros (*)
+
+/viajes/{id}/viajeros/{viajeroId}
+	PUT    - Añade un nuevo viajero al viaje
+	DELETE - Eliminar un viajero de un viaje 
+
+/usuarios
+	POST - Añade un nuevo usuario.
+
+/usuarios/{username}
+	GET - Devuelve un usuario
+	PUT - Sobreescribe un usuario
+	DELETE - Borra un usuario
+
+/usuarios/{username}/plazasSolicitadas/{viajeId}
+	PUT    - Solicita plaza en un viaje
+	DELETE - Elimina una solictud de plaza
+
+/usuarios/{username}/viajesActivos/
+	POST   - Crea un nuevo viaje y le proporciona un identificador
+
+/usuarios/{username}/viajesActivos/{viajeId}
+	DELETE - Cancela un viaje planificado
+	PUT    - Modifica los datos de un viaje propuesto
+	
+/usuarios/{username}/vehiculos
+	GET  - Obtiene la lista de vehiculos de un conductor
+	POST - Añade un nuevo vehiculo a la colección 
+
+/usuarios/{username}/vehiculos/{idVehiculo}
+	GET - Obtiene los datos del vehiculo
+	PUT - Modifica los datos de un vehiculo
+	DELETE - Elimina un vehiculo de la lista de vehiculos del conductor.	    		

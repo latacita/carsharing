@@ -12,37 +12,36 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
+
+import es.carsharing.service.api.Views;
+
 @Entity
 @Inheritance(strategy=InheritanceType.JOINED)
 public class Usuario {
 	
 	@Id
+	@JsonView(Views.DescripcionViaje.class)
 	protected String username;
+	@JsonView(Views.DescripcionViaje.class)
 	protected String nombre;
+	@JsonView(Views.DescripcionViaje.class)
 	protected String apellido;
-	protected Date fechaAlta;
+	@JsonView(Views.DescripcionViaje.class)
 	protected String email;
+	
+	@JsonIgnore
+	protected Date fechaAlta;
+	
 	@ElementCollection
+	@JsonView(Views.DescripcionViaje.class)
 	protected List<Integer> telefonos;
 	
 	@ManyToMany
 	protected Set<Viaje> plazasSolicitadas;
 	@ManyToMany(mappedBy="viajeros")
 	protected Set<Viaje> viajesAceptados;
-	
-	protected Usuario( ) {
-		
-	}
-	
-	public Usuario(String username, String nombre, String apellido, String email) {
-		this.username = username;
-		this.nombre = nombre;
-		this.apellido = apellido;
-		this.email = email;
-		this.telefonos = new ArrayList<Integer>();
-		this.fechaAlta = new Date();
-	}
-	
 	
 	public String getUsername() {
 		return username;
@@ -79,6 +78,20 @@ public class Usuario {
 	public Set<Viaje> getViajesAceptados() {
 		return viajesAceptados;
 	}
+	
+	protected Usuario( ) {
+		
+	}
+	
+	public Usuario(String username, String nombre, String apellido, String email) {
+		this.username = username;
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.email = email;
+		this.telefonos = new ArrayList<Integer>();
+		this.fechaAlta = new Date();
+	}
+	
 	
 	@Override
 	public String toString() {

@@ -32,12 +32,8 @@ public class AppFeeder implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		feedUsuarios();
-		// feedConductores();
-		// feedViajes();
-		
-		testViajeRepository();
-		
-		System.out.println("Application feeded");
+		feedConductores();
+		feedViajes();
 	}
 
 	private void feedUsuarios() {
@@ -54,7 +50,7 @@ public class AppFeeder implements CommandLineRunner {
 
 	private void feedViajes() {
 		
-		Conductor c = cr.findById("Travis").get();
+		Conductor c = cr.findById("TaxiDriver").get();
 		
 		Localizacion l11 = new PuntoConocido("Santander","Facultad de Ciencias"); 
 		Localizacion l12 = new PuntoConocido("Cadiz", "Playa de la Caleta");
@@ -79,42 +75,4 @@ public class AppFeeder implements CommandLineRunner {
 		vr.save(v2);
 	}
 	
-	private void testViajeRepository() {
-		
-//		SimpleDateFormat dateParser = new SimpleDateFormat("dd-MM-yyyy");
-//		Date sample = null;
-//		try {
-//			sample = dateParser.parse("01-01-2020");
-//		} catch (ParseException e) {
-//			System.out.println("Crujo parseando fecha");
-//			e.printStackTrace();
-//		}
-//		
-//		// Set<Viaje> viajes = vr.findByOrigenCiudadAndDestinoCiudad("Santander","Cadiz");
-//		Set<Viaje> viajes = vr.findByOrigenAndDestino("Santander","Cadiz");
-//		
-//		System.out.println("Viajes recuperados = " + viajes.size());
-//	
-//		for(Viaje v : viajes) {
-//			System.out.println("Viaje in " + v.getFecha());
-//		}
-//		
-//		viajes = vr.findByOrigen_CiudadAndFechaBeforeOrderByPrecio("Santander", sample);
-//
-//		System.out.println("================================");
-//		
-//		System.out.println("Viajes recuperados = " + viajes.size());
-		
-		
-//		Usuario paco = ur.findByEmail("paco@carSharing.es"); 
-//		
-//		System.out.println("Paco = " + paco.getNombre() + ":" + paco.getEmail());
-//		
-//		Set<Usuario> usuarios = ur.findByFechaAltaAfter(sample);
-//		for(Usuario u : usuarios) {
-//			System.out.println("Usuario " + u.getNombre() + ":" + u.getEmail());
-//		}
-		
-	}
-
 }

@@ -19,5 +19,10 @@ public class PuntoConocido extends Localizacion {
 		super(ciudad);
 		this.nombreSitio = nombreSitio;
 	}
-	
+
+	@Override
+	public String toString() {
+		return this.getNombreSitio() + ", "+ this.getCiudad();
+	}
+
 }

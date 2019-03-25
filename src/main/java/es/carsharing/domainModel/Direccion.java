@@ -25,8 +25,10 @@ public class Direccion extends Localizacion {
 		this.calle = calle;
 		this.numero = numero;
 	}
-	
-	
 
+	@Override
+	public String toString() {
+		return this.getCalle() + " " + this.getNumero() + ", " + this.getCiudad();
+	}
 
 }

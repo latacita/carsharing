@@ -5,9 +5,14 @@ import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import es.carsharing.service.api.Views;
+
 @Entity
 public class Conductor extends Usuario {
 	
+	@JsonView(Views.DescripcionViaje.class)
 	protected int anhosCarnet;
 	@OneToMany(mappedBy="conductor")
 	protected Set<Viaje> viajesActivos;
