@@ -22,7 +22,7 @@ public class Viaje {
 
 	@Id
 	@GeneratedValue
-	@JsonView(Views.DescripcionViaje.class)
+	@JsonView({Views.DescripcionViaje.class,Views.DescripcionUsuario.class})
 	protected long id;
 	
 	@JsonView(Views.DescripcionViaje.class)
@@ -31,16 +31,16 @@ public class Viaje {
 	protected int duracion;
 	@JsonView(Views.DescripcionViaje.class)
 	protected int numPlazas;
-	@JsonView(Views.DescripcionViaje.class)
+	@JsonView({Views.DescripcionViaje.class,Views.DescripcionUsuario.class})
 	protected Date fecha;
  
 	@OneToOne(cascade=CascadeType.ALL)
 	@JsonUnwrapped
-	@JsonView(Views.DescripcionViaje.class)
+	@JsonView({Views.DescripcionViaje.class,Views.DescripcionUsuario.class})
 	protected Localizacion origen;
 	@OneToOne(cascade=CascadeType.ALL)
 	@JsonUnwrapped
-	@JsonView(Views.DescripcionViaje.class)
+	@JsonView({Views.DescripcionViaje.class,Views.DescripcionUsuario.class})
 	protected Localizacion destino;
 	
 	@ManyToMany

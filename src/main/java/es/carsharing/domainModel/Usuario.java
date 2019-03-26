@@ -23,28 +23,34 @@ public class Usuario {
 	
 	@Id
 	@JsonView({Views.DescripcionViaje.class,
+		       Views.DescripcionUsuario.class,
 			   Views.NuevoUsuario.class})
 	protected String username;
 	@JsonView({Views.DescripcionViaje.class,
+		       Views.DescripcionUsuario.class,
 			   Views.NuevoUsuario.class})
 	protected String nombre;
 	@JsonView({Views.DescripcionViaje.class,
+	           Views.DescripcionUsuario.class,
 		       Views.NuevoUsuario.class})
 	protected String apellido;
 	@JsonView({Views.DescripcionViaje.class,
-		       Views.NuevoUsuario.class})
+    	       Views.DescripcionUsuario.class,
+	    	   Views.NuevoUsuario.class})
 	protected String email;
 	
 	@JsonIgnore
 	protected Date fechaAlta;
 	
 	@ElementCollection
-	@JsonView(Views.DescripcionViaje.class)
+	@JsonView({Views.DescripcionViaje.class,Views.DescripcionUsuario.class})
 	protected List<Integer> telefonos;
 	
 	@ManyToMany
+	@JsonView({Views.DescripcionUsuario.class})
 	protected Set<Viaje> plazasSolicitadas;
 	@ManyToMany(mappedBy="viajeros")
+	@JsonView({Views.DescripcionUsuario.class})
 	protected Set<Viaje> viajesAceptados;
 	
 	public String getUsername() {
