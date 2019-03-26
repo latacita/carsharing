@@ -22,13 +22,17 @@ import es.carsharing.service.api.Views;
 public class Usuario {
 	
 	@Id
-	@JsonView(Views.DescripcionViaje.class)
+	@JsonView({Views.DescripcionViaje.class,
+			   Views.NuevoUsuario.class})
 	protected String username;
-	@JsonView(Views.DescripcionViaje.class)
+	@JsonView({Views.DescripcionViaje.class,
+			   Views.NuevoUsuario.class})
 	protected String nombre;
-	@JsonView(Views.DescripcionViaje.class)
+	@JsonView({Views.DescripcionViaje.class,
+		       Views.NuevoUsuario.class})
 	protected String apellido;
-	@JsonView(Views.DescripcionViaje.class)
+	@JsonView({Views.DescripcionViaje.class,
+		       Views.NuevoUsuario.class})
 	protected String email;
 	
 	@JsonIgnore

@@ -1,11 +1,11 @@
-package es.carsharing.repositories;
+package es.carsharing.service.api;
 
 public class InitialUserData {
 
 	protected String username;
+	protected String nombre;
 	protected String apellido;
 	protected String email;
-	protected String nombre;
 	
 	public String getUsername() {
 		return username;
