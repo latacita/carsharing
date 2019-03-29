@@ -72,3 +72,6 @@ Modelo de Respuesta:
         "anhosCarnet": 22
     }
 }
+
+Recurso: /viajes/{id}/
+Verbos HTTP aceptados: GET, PUT, DELETE

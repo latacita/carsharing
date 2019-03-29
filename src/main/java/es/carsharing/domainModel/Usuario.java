@@ -53,6 +53,9 @@ public class Usuario {
 	@JsonView({Views.DescripcionUsuario.class})
 	protected Set<Viaje> viajesAceptados;
 	
+	@ElementCollection
+	protected List<Notificacion> notificaciones;
+	
 	public String getUsername() {
 		return username;
 	}
@@ -100,17 +103,27 @@ public class Usuario {
 		this.email = email;
 		this.telefonos = new ArrayList<Integer>();
 		this.fechaAlta = new Date();
+		this.notificaciones = new ArrayList<Notificacion>();
 	}
-	
 	
 	@Override
 	public String toString() {
 		return "[" + this.username + "] " + this.nombre + " " + this.apellido; 
 	}
-	
 
-	public void solicitarPlaza(Viaje v) {
-		
+	public void anhadirViaje(Viaje v) {
+		this.getViajesAceptados().add(v);
+		String subject = "Aceptado en viaje " + v.getId() 
+				+ ":" + v.getOrigen().getCiudad() + " - " +
+				v.getDestino().getCiudad();
+		String body = "¡¡ Enhorabuena !! \n\n "
+				+ "Ha sido usted seleccionado como pasajero para el "
+				+ "viaje organziado por " + v.getConductor().getNombre() 
+				+ " entre " + v.getOrigen().getCiudad() + " y "
+                + v.getDestino().getCiudad() + " para el día " 
+				+ v.getFecha();
+		Notificacion n = new Notificacion(subject,body);
+		this.notificaciones.add(n);
 	}
 	
 	public void anhadirTelefono(Integer telefono) {
@@ -125,6 +138,5 @@ public class Usuario {
 	public void moverTelefono(Integer telefono, int nuevaPos) {
 		// Pendiente de implementacion
 	}
-	
 	
 }

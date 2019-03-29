@@ -43,6 +43,7 @@ public class Viaje {
 	protected Localizacion destino;
 	
 	@ManyToMany
+	@JsonView({Views.DescripcionViaje.class})
 	protected Set<Usuario> viajeros;
 	@ManyToOne
 	@JsonView(Views.DescripcionViaje.class)
@@ -80,8 +81,6 @@ public class Viaje {
 		this.fecha = fecha;
 	}
 	
-	
-	
 	public long getId() {
 		return id;
 	}
@@ -116,6 +115,19 @@ public class Viaje {
 		this.origen = origen;
 		this.destino = destino;
 		this.conductor = conductor;
+	}
+	
+	public boolean aceptarUsuario(Usuario u) {
+		
+		boolean result = false;
+		
+		if (this.getViajeros().size() < this.getNumPlazas()) {
+			this.getViajeros().add(u);
+			u.anhadirViaje(this);
+			result = true;
+		} 
+				
+		return result;
 	}
 	
 }
