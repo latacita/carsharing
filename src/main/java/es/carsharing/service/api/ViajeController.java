@@ -3,7 +3,10 @@ package es.carsharing.service.api;
 import java.util.List;
 import java.util.Optional;
 
-import org.apache.catalina.connector.Response;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceUnit;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +22,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import es.carsharing.domainModel.Viaje;
-import es.carsharing.repositories.ViajeRepository;
 import es.carsharing.service.ResourceNotFound;
 import es.carsharing.service.ViajesMng;
 
@@ -29,6 +31,9 @@ public class ViajeController {
 	
 	@Autowired
 	ViajesMng viajesSvc;
+	
+	@PersistenceUnit
+	EntityManagerFactory emf;
 	
 	Logger logger = LoggerFactory.getLogger(ViajeController.class);
 
@@ -74,7 +79,7 @@ public class ViajeController {
 		ResponseEntity<Viaje> result = null;
 		
 		try {
-			Viaje v = viajesSvc.anhadirViajero(viajeId, viajeroId);
+			Viaje v = viajesSvc.anhadirViajeroGestionadoArtesano(viajeId, viajeroId);
 			if (v != null) {
 				result = ResponseEntity.ok(v);
 			} else {
