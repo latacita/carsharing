@@ -33,7 +33,7 @@ public class ViajesMng {
 	}
 	
 	public List<Viaje> findByOrigenAndDestino(String origen, String destino) {
-		return vr.findByOrigenAndDestino(origen, destino);
+		return vr.findByOrigenCiudadAndDestinoCiudad(origen, destino);
 	}
 	
 

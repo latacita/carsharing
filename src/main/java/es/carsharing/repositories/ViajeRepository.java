@@ -10,6 +10,6 @@ import es.carsharing.domainModel.Viaje;
 public interface ViajeRepository extends JpaRepository<Viaje,Long> {
 	
 	@Query("SELECT v FROM Viaje v WHERE v.origen.ciudad = ?1 AND v.destino.ciudad = ?2")
-	public List<Viaje> findByOrigenAndDestino(String origen, String destino);
+	public List<Viaje> findByOrigenCiudadAndDestinoCiudad(String origen, String destino);
 	
 }
